@@ -1,0 +1,73 @@
+	• If the module is package then it must have value set for __path__
+	• After you import a module you can easily  see the module is package or number by inspecting the__path__
+	• If __path__ empty then it is module else it is package
+
+Package and file system 
+	• Module does not need to entity is file system
+	• Even package should not have entity to be there in file system
+	• Package still represent hierarchy of  modules
+	Ex : Pack1.module1
+	• Ex : Pack2.Pack3.module
+	 dot notation is used for indication of hierarchy 
+	
+Importing packages  example  Ex : Pack2.Pack3.module1 Steps
+	• Import pack2
+	• Import Pack3
+	• Import module1
+	• Pack2.Pack3.module each path will import and cached in sys module
+	
+	If you want module1 in you namespace
+	
+      from pack1 import module1
+	
+	• Package path is created using file system directory and files
+	• Package is simply  a module that contain other module/package
+	• On the file system  we therefore have to use directory of package
+	• Directory name becomes the package name ( __init__.py)
+	
+	
+	1. Create a directory  whose name is package name
+	2. Create a file within directory __init__.py inside directory  (this will python that directory is package as apposed to standard library
+
+If we don’t create __init__.py then python will create implicit namespace
+	
+	app /
+		Pack1/
+			__init__.py
+			Module1.py
+			Module2.py
+			
+	import Pack1
+	• The code for Pack1 is in __init__.py
+	• Code will be loaded ,executed and cached to sys.module with key  of pack1
+	• The Pack1 will be added to namespace 
+	• Pack1 will have __path__ property 
+	• Pack1 will have __file__ property
+	
+Nested package 
+app/
+	Pack1/
+		__init__.py
+		Module1.py  -------------------------Pack1.Module1 
+		Module2.py
+		Pack1_1/  -------------------------Pack1.Pack1_1
+			__init__.py
+			Module1a.py-------------------------Pack1.Pack1_1.Module1a
+			Module2a.py
+	
+	
+	3 Properties are available as the part of package
+
+__file__ - - > Location of module code in the file system 
+__package__ --> is the package the module code loaded in 
+__path__  --> is the package  the module code located in 
+
+
+Import Pack1.Pack1_1.Moduel1a
+
+Pack1 will be imported  to sys.module cache
+Pack1_1 will be imported to sys.module cache
+Module1a will be imported to sys.module cache.
+
+
+
