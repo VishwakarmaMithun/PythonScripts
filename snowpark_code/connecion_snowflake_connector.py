@@ -1,17 +1,26 @@
 import os
 import snowflake.connector
+from dotenv import load_dotenv
+load_dotenv()
 
 # Load environment variables from .env file
-db_user = os.getenv("snowflake_password")
+snowflake_password = os.getenv("snowflake_password")
+snowflake_user = os.getenv("snowflake_user")
+snowflake_account= os.getenv("snowflake_account")
+snowflake_role = os.getenv("snowflake_role")
+snowflake_warehouse= os.getenv("snowflake_warehouse")
+snowflake_database= os.getenv("snowflake_database")
+snowflake_schema= os.getenv("snowflake_schema")
+ 
 # Create connection
 conn = snowflake.connector.connect(
-    user='RAVINA',
-    password= db_user,
-    account= 'oialxdd-xqb21073',
-    warehouse="COMPUTE_WH",
-    database= "HRMS",
-    schema="HR",
-    role= 'ACCOUNTADMIN',
+    user=snowflake_user,
+    password= snowflake_password ,
+    account= snowflake_account,
+    warehouse=snowflake_warehouse,
+    database= snowflake_database,
+    schema=snowflake_schema,
+    role= snowflake_role,
 )
 
 
